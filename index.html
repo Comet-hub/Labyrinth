@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Unity WebGL Player | Labyrinth</title>
+  </head>
+  <body">
+    <div class="container">
+      <canvas id="unity-canvas" width=1024 height=768></canvas>
+      <div class="content">
+        <div class="controls">
+          <h1>Controles</h1>
+          <div class="control">
+            <div class="controlInput">
+              <img class="controlImg" src="img/Mouse.svg" alt="sujetar">
+              <p class="control__name">Sujeta</p>
+            </div>
+            <div class="controlInput">
+              <img class="controlImg" src="img/Mouse move.svg" alt="mover">
+              <p class="control__name">Mueve</p>
+            </div>
+          </div>
+          
+        </div>
+        <button type="button" class="button-back" onclick="window.location.href='https://tu1ip.github.io';"> 
+          <p class="button-back__p">
+            Volver
+          </p>
+      </button>
+      </div>
+    </div>
+    </div>
+    
+    <script src="Build/Labyrinth WebGL.loader.js"></script>
+    <script>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
+
+        document.body.style.textAlign = "left";
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/Labyrinth WebGL.data",
+        frameworkUrl: "Build/Labyrinth WebGL.framework.js",
+        codeUrl: "Build/Labyrinth WebGL.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "CC",
+        productName: "Labyrinth",
+        productVersion: "2.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+    </script>
+  </body>
+</html>
